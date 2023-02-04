@@ -1,0 +1,9 @@
+.layout {
+    color: red;
+    font-weight: 600;
+  }
+  
+  .layout:hover{
+    color: black;
+  }
+  

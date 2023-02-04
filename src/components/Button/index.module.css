@@ -1,0 +1,32 @@
+.button {
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    border-radius: 55px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+    color: currentColor;
+  }
+  
+.primary {
+    background-color: #ffe44d;
+  }
+.primary:hover {
+    background-color: #ffaa0d;
+    color: #f44336;
+  }
+  
+.secondary {
+    background-color: blue;
+  }
+.secondary:hover {
+    color: #f44336;
+  }
+.critical {
+    background-color: green;
+  }
+.warning {
+    background-color: hsl(51, 67%, 38%);
+  }
