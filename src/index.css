@@ -1,31 +1,41 @@
-/*@import "~normalize.css";*/
+/*@import '~normalixe.css';*/
 
 * {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-	font-family: "Nunito", "Arial", "Helvetica", sans-serif;
+  font-family: 'Nunito', 'Arial', 'Helvetica', sans-serif;
 }
 
 .container {
-	max-width: 1024px;
-	padding-left: 16px;
-	padding-right: 16px;
-	width: 95%;
-	margin: 0 auto;
+  max-width: 1024px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 95%;
+  margin: 0 auto;
+}
+.content__dark {
+  color: white;
+  border-color: green;
+  background-color: darkgrey;
+}
+.content__light {
+  color: black;
+  border-color: yellow;
+  background-color: white;
 }
 
 img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .content {
-	padding: 20px 0;
+  padding: 20px 0;
 }
 
 .content__sort {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
 }

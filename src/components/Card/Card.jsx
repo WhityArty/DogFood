@@ -1,7 +1,10 @@
 import cn from 'classnames';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
 import api from '../../utils/api';
 
-import './Card.css';
+import './index.css';
 import { ReactComponent as Save } from './save.svg';
 
 const Card = ({
@@ -13,12 +16,13 @@ const Card = ({
   pictures,
   tags,
   likes,
-  currentUser,
   onProductLike,
   _id,
 }) => {
+  const { currentUser } = useContext(UserContext);
   const liked = likes.some((id) => id === currentUser?._id);
   const discount_price = Math.round(price - (price * discount) / 100);
+
   return (
     <div className='card'>
       <div className='card__sticky card__sticky_type_top-left'>
@@ -40,13 +44,13 @@ const Card = ({
           className={cn('card__favorite', {
             'card__favorite_is-active': liked,
           })}
-          onClick={()=> onProductLike({ _id, likes })}
+          onClick={() => onProductLike({ _id, likes })}
         >
           <Save className='card__favorite-icon' />
         </button>
       </div>
 
-      <a href='/product' className='card__link'>
+      <Link to={`/product/${_id}`} className='card__link'>
         <img src={pictures} alt={description} className='card__image' />
         <div className='card__desc'>
           <span className={discount !== 0 ? 'card__old-price' : 'card__price'}>
@@ -60,7 +64,7 @@ const Card = ({
           <span className='card__wight'>{wight}</span>
           <p className='card__name'>{name}</p>
         </div>
-      </a>
+      </Link>
       <a href='#' className='card__cart btn btn_type_primary'>
         В корзину
       </a>

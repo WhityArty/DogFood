@@ -98,10 +98,22 @@
 	padding: 0;
 	display: flex;
 }
+.card__favorite svg {
+	fill: #FFFFFF;
+	stroke-width: 1px;
+	stroke: #7b8e98;
+}
+
+.card__favorite_is-active svg {
+	fill: #F44336;
+	stroke-width: 0;
+}
 
 .card__cart {
 	margin-top: auto;
 }
+
+
 
 .card__link {
 	text-decoration: none;
@@ -117,6 +129,7 @@
 	text-decoration: none;
 	display: inline-block;
 	transition: background-color .3s;
+  cursor: pointer;
 }
 
 .btn_type_primary {
@@ -142,7 +155,4 @@
 .tag_type_sale {
 	background-color: #01A54E;
 	color: #FFFFFF;
-}
-svg {
-    fill: red;
 }

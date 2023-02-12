@@ -1,10 +1,10 @@
 import React from "react";
-import "./Spiner.css";
+import s from "./index.module.css";
 
 
 const Spinner = () => {
 	return (
-		null
+		<div className={s.spinner}/>
 	);
 };
 

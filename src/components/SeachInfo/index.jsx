@@ -1,4 +1,4 @@
-import "./SeachInfo.css";
+import "./index.css";
 
 const SeachInfo = ({searchText, searchCount}) => {
 	return (
