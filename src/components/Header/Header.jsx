@@ -1,51 +1,49 @@
-import s from './index.module.css';
-import cn from 'classnames';
-import { useContext, useState } from 'react';
-import { ThemeContext } from '../../context/themeContext';
+import s from './index.module.css'
+import cn from 'classnames'
+import { useContext } from 'react'
 
-import { ReactComponent as FavIcon } from './img/fav.svg';
-import { Link } from 'react-router-dom';
-import { CardContext } from '../../context/cardContext';
-import { useEffect } from 'react';
-import api from '../../utils/api';
-import { isVisible } from '@testing-library/user-event/dist/utils';
+import { ReactComponent as FavIcon } from './img/fav.svg'
+import { ReactComponent as ProfileIcon } from './img/profile.svg'
+import { ReactComponent as ChartsIcon } from './img/charts.svg'
+import { ReactComponent as LogIcon } from './img/log.svg'
 
-function Header({ children, setActiveModal }) {
-  const { favorites } = useContext(CardContext);
+import { Link, useLocation } from 'react-router-dom'
+import { CardContext } from '../../context/cardContext'
+import { UserContext } from '../../context/userContext'
 
-  const [state, setState] = useState('');
-  const [isVisible, setVisible] = useState(false);
+function Header(props) {
+  const { favorites } = useContext(CardContext)
+  const location = useLocation()
 
-  const { toggleTheme } = useContext(ThemeContext);
+  const { isAuthentificated, setActiveModal } = useContext(UserContext)
 
-  function checkMouse(e) {
-    if (e.target.textContent === 'enter') {
-      setVisible(true);
-    }
-  }
-  // alert();
-  // eslint-disable-next-line no-restricted-globals
-  // confirm('Are you sure');
-
+  console.log(isAuthentificated)
   return (
     <header className={cn(s.header, 'cover')}>
-      <div className='container'>
+      <div className="container">
         <div className={s.wrapper}>
-          {children}
-          <div>
-            <Link
-              to={'/login'}
-              style={{ cursor: 'pointer', position: 'relative' }}
-              onClick={() => setActiveModal(true)}
-              onMouseEnter={(e) => checkMouse(e)}
-              onMouseLeave={() => setVisible(false)}
-            >
-              enter
-            </Link>
-            {isVisible && <div style={{ position: 'absolute' }}>I AM HERE</div>}
-          </div>
-
+          {props.children}
           <div className={s.iconsMenu}>
+            {isAuthentificated ? (
+              <Link to={'/profile'} className={s.favoritesLink}>
+                <ProfileIcon />
+              </Link>
+            ) : (
+              <Link
+                to={'/login'}
+                className={s.favoritesLink}
+                onClick={() => setActiveModal(true)}
+                state={{
+                  backgroundLocation: location,
+                  initialPath: location.pathname,
+                }}
+              >
+                {<LogIcon />}
+              </Link>
+            )}
+            <Link to={'/visual'} className={s.favoritesLink}>
+              <ChartsIcon />
+            </Link>
             <Link className={s.favoritesLink} to={'/favorites'}>
               <FavIcon />
               {favorites.length !== 0 && (
@@ -56,7 +54,7 @@ function Header({ children, setActiveModal }) {
         </div>
       </div>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header

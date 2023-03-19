@@ -16,12 +16,12 @@
   }
   
   
-  .yellow {
+.yellow {
     border: none;
     background-color: #FFE44D;
   }
   
-  .white {
+.white {
     border: 1px solid #ECEFF1; 
     background: white;
   }

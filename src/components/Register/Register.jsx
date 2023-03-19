@@ -5,9 +5,10 @@ import {
   PASS_REGEXP,
   VALIDATE_CONFIG,
 } from '../../constants/constants';
+import { authApi, registration } from '../../utils/authApi';
 import { BaseButton } from '../BaseButton/BaseButton';
 import { Form } from '../Form/Form';
-import '../Login/style.css';
+import '../Login/style.scss';
 
 export const Register = () => {
   const {
@@ -37,8 +38,11 @@ export const Register = () => {
     },
   });
 
-  const sendData = (data) => {
+  const sendData = async (data) => {
     console.log({ data });
+    // await authApi.register({...data, group: 'group-9'});
+    await registration({...data, group: 'group-9'});
+
   };
 
   const navigate = useNavigate();

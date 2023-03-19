@@ -1,0 +1,14 @@
+@mixin font-body($weight) {
+    font-family: 'Nunito', 'Arial', 'Helvetica', sans-serif;
+    font-variant: normal;
+    font-weight: $weight;
+}
+@mixin font-h1() {
+  font-weight: $weight;
+  font-family: 'Nunito', 'Arial', 'Helvetica', sans-serif;
+}
+
+@mixin font-h2() {
+  font-weight: $weight;
+  font-family: 'Nunito', 'Arial', 'Helvetica', sans-serif;
+}

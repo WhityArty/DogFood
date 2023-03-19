@@ -1,11 +1,17 @@
-import "./index.css";
+import { useLocation } from 'react-router-dom';
+import './index.css';
 
-const SeachInfo = ({searchText, searchCount}) => {
-	return (
-		searchText && <section className="search-title">
-			По запросу <span>{searchText}</span> найдено {searchCount} товаров
-		</section>
-	);
+const SeachInfo = ({ searchText, searchCount }) => {
+  const location = useLocation();
+  console.log({ location });
+  return (
+    location.pathname === '/' &&
+    searchText && (
+      <section className='search-title'>
+        По запросу <span>{searchText}</span> найдено {searchCount} товаров
+      </section>
+    )
+  );
 };
 
 export default SeachInfo;

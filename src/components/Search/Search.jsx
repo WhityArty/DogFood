@@ -1,18 +1,18 @@
 import './index.css';
 import { ReactComponent as SearchIcon } from './ic-search.svg';
 import { ReactComponent as CloseIcon } from './ic-close-input.svg';
-import { useLocation } from 'react-router-dom';
 
 function Search({ onSubmit: propsOnSubmit, onInput }) {
+
+
   const handleInput = (e) => {
     onInput(e.target.value);
   };
 
-  const location = useLocation();
 
   return (
     <>
-      {location.pathname === '/' ? (
+      {/* {location.pathname === '/' ? ( */}
         <form className='search' onSubmit={propsOnSubmit}>
           <input
             type='text'
@@ -25,9 +25,9 @@ function Search({ onSubmit: propsOnSubmit, onInput }) {
             {false && <CloseIcon />}
           </button>
         </form>
-      ) : (
+      {/* ) : (
         <></>
-      )}
+      )} */}
     </>
   );
 }

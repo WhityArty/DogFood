@@ -1,4 +1,5 @@
-/*@import '~normalixe.css';*/
+@import '~normalize.css';
+@import './styles/mixins.scss';
 
 * {
   box-sizing: inherit;
@@ -7,7 +8,7 @@ html {
   box-sizing: border-box;
 }
 body {
-  font-family: 'Nunito', 'Arial', 'Helvetica', sans-serif;
+ @include font-body(400);
 }
 
 .container {
