@@ -9,24 +9,20 @@
   &:hover {
     box-shadow: $box-shadow-2;
   }
-
   &:focus-within {
     box-shadow: $box-shadow-1;
   }
-
   &__desc {
     font-size: 16px;
     padding-top: 14px;
     font-weight: 600;
     position: relative;
   }
-  
   &__image {
     width: 100%;
     object-fit: contain;
     margin-bottom: 16px;
   }
-
   &__old-price {
     font-size: 12px;
     position: absolute;
@@ -38,7 +34,6 @@
     display: block;
     height: 14px;
   }
-
   &__price {
     font-size: 20px;
     line-height: 24px;
@@ -46,7 +41,6 @@
     display: block;
     margin-bottom: 6px;
   }
-
   &__price_type_discount {
     color: #f44336;
   }

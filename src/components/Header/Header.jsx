@@ -1,6 +1,6 @@
 import s from './index.module.css'
 import cn from 'classnames'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import { ReactComponent as FavIcon } from './img/fav.svg'
 import { ReactComponent as ProfileIcon } from './img/profile.svg'
@@ -10,10 +10,21 @@ import { ReactComponent as LogIcon } from './img/log.svg'
 import { Link, useLocation } from 'react-router-dom'
 import { CardContext } from '../../context/cardContext'
 import { UserContext } from '../../context/userContext'
+import { useTranslation } from 'react-i18next'
 
 function Header(props) {
   const { favorites } = useContext(CardContext)
   const location = useLocation()
+  const { i18n } = useTranslation();
+  const [lang, setLang] = useState('ru');
+
+  const changeLanguage = () => {
+    const lang = localStorage.getItem('lang') ?? 'ru';
+    const newLang = lang === 'ru' ? 'en' : 'ru'
+    i18n.changeLanguage(newLang);
+    setLang(newLang)
+    localStorage.setItem('lang', newLang);
+  }
 
   const { isAuthentificated, setActiveModal } = useContext(UserContext)
 
@@ -50,6 +61,7 @@ function Header(props) {
                 <span className={s.iconBubble}>{favorites.length}</span>
               )}
             </Link>
+            <span className={s.lang} onClick={()=>changeLanguage()}>{lang}</span>
           </div>
         </div>
       </div>

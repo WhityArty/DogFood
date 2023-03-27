@@ -1,3 +1,4 @@
+import { notification } from 'antd'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -12,6 +13,7 @@ import { parseJwt } from '../../utils/parseJWT'
 import { BaseButton } from '../BaseButton/BaseButton'
 import { Form } from '../Form/Form'
 import '../Login/style.scss'
+import { openNotification } from '../Notification/Notification'
 
 export const ResetPassword = ({ setAuthentificated }) => {
   const {
@@ -51,8 +53,12 @@ export const ResetPassword = ({ setAuthentificated }) => {
         navigate('/')
       }
     } else {
-      await authApi.resetPass(formData)
-      setTokenResp(true)
+      try {
+        await authApi.resetPass(formData)
+        setTokenResp(true)
+      } catch (error) {
+        openNotification("error", "Error", "Что-то пошло не так");  
+      }
     }
   }
 

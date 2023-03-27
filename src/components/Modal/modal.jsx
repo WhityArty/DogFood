@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import './index.css'
 
-
 export const Modal = ({ children, activeModal, setActiveModal }) => {
 // const [active, setActive] = useState(false);
 

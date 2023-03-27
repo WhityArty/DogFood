@@ -4,11 +4,9 @@ import { ReactComponent as CloseIcon } from './ic-close-input.svg';
 
 function Search({ onSubmit: propsOnSubmit, onInput }) {
 
-
   const handleInput = (e) => {
     onInput(e.target.value);
   };
-
 
   return (
     <>

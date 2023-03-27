@@ -1,4 +1,4 @@
-import Card from '../Card/Card';
+import Card from '../Card/card';
 import './index.scss';
 
 const CardList = ({ onProductLike, cards = [] }) => {

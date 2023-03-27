@@ -23,5 +23,17 @@
       max-width: 740px;
       margin: 20px 0;
     }
+    &__avatar {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      max-width: 740px;
+      margin: 20px 0;
+    }
+    &__image {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
   }
   

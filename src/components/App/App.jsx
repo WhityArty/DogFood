@@ -28,9 +28,14 @@ import { Chart } from "../Chart/Chart";
 import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 import { Profile } from "../Profile/Profile";
 
+import { getAllProducts } from "../../storageTK/actions/productsActions";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../../storageTK/user/userSlice";
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+
 function App() {
   const [cards, setCards] = useState([]);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [theme, setTheme] = useState(themes.light);
@@ -73,6 +78,15 @@ function App() {
   const handleInputChange = (inputValue) => {
     setSearchQuery(inputValue);
   };
+
+  const user = useSelector((state)=>state.user.data);
+
+  useEffect(()=>{
+    if (!user?.data?._id) {
+      return
+    }
+    setCurrentUser(user);
+  },[user])
 
   useEffect(() => {
     if (!isAuthentificated) {
@@ -163,6 +177,7 @@ function App() {
     isAuthentificated,
     setActiveModal,
     setAuthentificated,
+    setCurrentUser
   };
 
   const authRoutes = (

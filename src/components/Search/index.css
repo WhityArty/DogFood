@@ -35,15 +35,19 @@
 	right: 20px;
 	display: flex;
 }
+
 .search__btn svg {
 	fill: #7B8E98;
 }
+
 .search__btn_disabled svg {
 	fill: #CFD8DC;
 }
+
 .search__btn:focus svg{
 	fill: #FEBA0C;
 }
+
 .search__btn:hover svg{
 	fill: #FEBA0C;
 }

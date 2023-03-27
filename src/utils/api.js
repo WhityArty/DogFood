@@ -6,18 +6,18 @@ const onResponse = (res) => {
 };
 
 class Api {
-  constructor({ baseUrl, configFunc, headers }) {
+  constructor({ baseUrl, configuration, headers }) {
     this._baseUrl = baseUrl;
-    this._configFunc = configFunc;
+    this._configuration = configuration;
     this._headers = headers;
-
   }
+
   getProductsList() {
 
     console.log('THIS IS this._headers or config.headers', this._headers);
-    console.log('THIS IS configFunc()', this._configFunc());
+    console.log('THIS IS configuration()', this._configuration());
 
-    return fetch(`${this._baseUrl}/products`, {headers: this._headers}).then(
+    return fetch(`${this._baseUrl}/products`, { headers: this._headers }).then(
       onResponse
     );
   }
@@ -74,6 +74,13 @@ class Api {
     return fetch(`${this._baseUrl}/v2/group-9/users`, this._configFunc()).then(
       onResponse
     );
+  }
+  editUserAvatar(body) {
+    return fetch(`${this._baseUrl}/v2/group-9/users/me/avatar`, {
+      ...this._configuration(),
+      method: "PATCH",
+      body: JSON.stringify(body),
+    }).then((res) => onResponse(res))
   }
   addReview(productId, body) {
     return fetch(`${this._baseUrl}/products/review/${productId}`, {

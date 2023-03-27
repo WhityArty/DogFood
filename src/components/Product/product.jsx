@@ -73,7 +73,11 @@ export const Product = ({
   const getUser = (id) => {
     if (!users.length) return "User";
     const user = users.find((el) => el._id === id);
-    return user?.name ?? "User";
+    console.log({ user });
+    if (user.avatar.includes('default-image')) {
+      return {...user, avatar : 'https://img.freepik.com/free-vector/cute-fox-operating-laptop-cartoon-illustration_138676-2743.jpg'}
+    }
+    return user;
   };
 
   const options = {

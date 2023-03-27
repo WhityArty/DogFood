@@ -1,13 +1,14 @@
-import { useContext } from 'react'
-import { useForm } from 'react-hook-form'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from "react";
+import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import { UserContext } from '../../context/userContext'
-import { login } from '../../utils/authApi'
-import { emailRegister, passwordRegister } from '../../utils/utils'
-import { BaseButton } from '../BaseButton/BaseButton'
-import { Form } from '../Form/Form'
-import './style.scss'
+import { UserContext } from '../../context/userContext';
+import { login } from '../../utils/authApi';
+import { emailRegister, passwordRegister } from '../../utils/utils';
+import { BaseButton } from '../BaseButton/BaseButton';
+import { Form } from '../Form/Form';
+import './style.scss';
 
 export const Login = () => {
   const {
