@@ -10,8 +10,8 @@ class Api {
     this._baseUrl = baseUrl;
     this._configuration = configuration;
     this._headers = headers;
-  }
 
+  }
   getProductsList() {
 
     console.log('THIS IS this._headers or config.headers', this._headers);
@@ -24,23 +24,23 @@ class Api {
   getRickAndMortyList(page) {
     return fetch(
       `https://rickandmortyapi.com/api/character/?page=${page}`,
-      this._configFunc()
+      this._configuration()
     ).then(onResponse);
   }
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, this._configFunc()).then(
+    return fetch(`${this._baseUrl}/users/me`, this._configuration()).then(
       onResponse
     );
   }
   search(searchQuery) {
     return fetch(
       `${this._baseUrl}/products/search?query=${searchQuery}`,
-      this._configFunc()
+      this._configuration()
     ).then(onResponse);
   }
   setUserInfo(dataUser) {
     return fetch(`${this._baseUrl}/users/me`, {
-      ...this._configFunc(),
+      ...this._configuration(),
       method: "PATCH",
       body: JSON.stringify(dataUser),
     }).then(onResponse);
@@ -48,30 +48,30 @@ class Api {
   changeLikeProduct(productId, isLike) {
     return fetch(`${this._baseUrl}/products/likes/${productId}`, {
       method: isLike ? "DELETE" : "PUT",
-      ...this._configFunc(),
+      ...this._configuration(),
     }).then(onResponse);
   }
 
   getProductById(idProduct) {
     return fetch(
       `${this._baseUrl}/products/${idProduct}`,
-      this._configFunc()
+      this._configuration()
     ).then(onResponse);
   }
   deleteProductById(idProduct) {
     return fetch(`${this._baseUrl}/products/${idProduct}`, {
-      ...this._configFunc(),
+      ...this._configuration(),
       method: "DELETE",
     }).then(onResponse);
   }
   getUsersById(userId) {
     return fetch(
       `${this._baseUrl}/v2/group-9/users/${userId}`,
-      this._configFunc()
+      this._configuration()
     ).then(onResponse);
   }
   getUsers() {
-    return fetch(`${this._baseUrl}/v2/group-9/users`, this._configFunc()).then(
+    return fetch(`${this._baseUrl}/v2/group-9/users`, this._configuration()).then(
       onResponse
     );
   }
@@ -84,20 +84,20 @@ class Api {
   }
   addReview(productId, body) {
     return fetch(`${this._baseUrl}/products/review/${productId}`, {
-      ...this._configFunc(),
+      ...this._configuration(),
       method: "POST",
       body: JSON.stringify(body),
     }).then(onResponse);
   }
   deleteReview(productId, reviewId) {
     return fetch(`${this._baseUrl}/products/review/${productId}/${reviewId}`, {
-      ...this._configFunc(),
+      ...this._configuration(),
       method: "DELETE",
     }).then(onResponse);
   }
 }
 
-const configFunc = () => {
+const configuration = () => {
 
   console.log('HELLO i was called');
   return {
@@ -114,7 +114,7 @@ const config = {
     "content-type": "application/json",
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   },
-  configFunc: configFunc,
+  configuration: configuration,
 };
 
 const api = new Api(config);
