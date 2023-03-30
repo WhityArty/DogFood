@@ -281,10 +281,14 @@ export const Product = ({
             </Form>
           )}
         </div>
+
         {reviewsProduct
           ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-          .map((e) => (
-            <div key={e.created_at} className={s.review}>
+          .map((e) => {
+            const author = getUser(e.author);
+
+            return (
+              <div key={e.created_at} className={s.review}>
               <div className={s.review__author}>
                 <div className={s.review__info}>
                   <span>{getUser(e.author)} </span>
@@ -292,11 +296,8 @@ export const Product = ({
                     {new Date(e.created_at).toLocaleString("ru", options)}
                   </span>
                   {e.author === currentUser?._id && (
-                    <span
-                      className={s.basket}
-                      onClick={() => deleteReview(e._id)}
-                    >
-                      <Basket />
+                    <span className={s.basket} onClick={() => deleteReview(e._id)}>
+                       <Basket />
                     </span>
                   )}
                 </div>
@@ -306,7 +307,7 @@ export const Product = ({
                 <span>{e.text}</span>
               </div>
             </div>
-          ))}
+          )})};
       </div>
     </>
   );
