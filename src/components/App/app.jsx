@@ -27,12 +27,18 @@ import { StyleGuide } from "../StyleGuide/StyleGuide";
 import { Chart } from "../Chart/Chart";
 import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 import { Profile } from "../Profile/Profile";
-
-import { getAllProducts } from "../../storageTK/actions/productsActions";
+// import { getAllProducts } from "../../storage/actions/productsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../storageTK/user/userSlice";
-import i18n from "i18next";
-import { useTranslation, initReactI18next } from "react-i18next";
+import { parseJwt } from "../../utils/parseJWT";
+import { useCurrentWidth } from "../../hooks/useCurrentWidth";
+import { EditPost } from "../EditPost/EditPost";
+import { CreateProduct } from "../CreateProduct/CreateProduct";
+import { BasketPage } from "../../pages/basket/basketPage";
+// import { TsExample } from "./index.tsx";
+// import { Test } from "./index.tsx";
+// import i18n from "i18next";
+// import { useTranslation, initReactI18next } from "react-i18next";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -42,13 +48,19 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [activeModal, setActiveModal] = useState(true);
   const [isAuthentificated, setAuthentificated] = useState(false);
+  const [isMobileView, setMobileView] = useState(false);
+  const [size, setSize] = useState(10);
+  const [total, setTotal] = useState(null);
+  const [page, setPage] = useState(1);
+
+  const dispatch = useDispatch();
 
   const debounceSearchQuery = useDebounce(searchQuery, 2000);
   const navigate = useNavigate();
 
-  // отфильтровал карточки на клиенте по времени создания и пустому изображению
-  const checkCardLocal = (item) => {
-    // return true
+  // const cardsProd = useSelector(state => state.products.list.products);
+
+  const checkCardLocal = (item) => {// отфильтровала карточки на клиенту по времени создания и пустому изображению
     return (
       !item.pictures.includes("default-image") &&
       new Date(item.created_at) < new Date("2022-12-05T11:22:43.008Z")
@@ -156,7 +168,6 @@ function App() {
   };
 
   const location = useLocation();
-
   const backgroundLocation = location.state?.backgroundLocation;
   const initialPath = location.state?.initialPath;
 
@@ -280,8 +291,3 @@ function App() {
 }
 
 export default App;
-
-// Как сравнивает реакт
-// 1 реакт сравнивает по ссылке стейты
-// 2 реакт сравнивает по содержимому
-// setCards()

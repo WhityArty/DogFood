@@ -1,14 +1,14 @@
 .header {
     width: 100%;
-    background-color: #fed700;
-    padding: 12px 0;
+    background-color: #89ace9c1;
+    padding: 10px 0;
 }
 
 .wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 80px;
+	gap: 30px;
 }
 
 @media (max-width: 700px) {
@@ -22,19 +22,20 @@
 .profile{
 	display: flex;
 	flex-direction: column;
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 600;
 	align-items: flex-end;
 }
 
 .iconsMenu {
 	display: flex;
+	gap: 1.5rem;
 }
 
 .favoritesLink {
 	position: relative;
-	width: 34px;
-	height: 34px;
+	width: 25px;
+	height: 25px;
 }
 .iconsMenu svg{
 	width: 100%;
@@ -42,19 +43,19 @@
 }
 
 .iconBubble{
-	background-color: #01A54E;
+	background-color: #11cd20;
 	border-radius: 50%;
 	color: #FFFFFF;
 	font-size: 14px;
-	width: 22px;
-	height: 22px;
+	width: 20px;
+	height: 20px;
 	line-height: 1.25;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
 	position: absolute;
-	bottom: 60%;
+	bottom: 30%;
 	left: 70%;
 }
 

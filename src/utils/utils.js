@@ -4,7 +4,7 @@ import {
     VALIDATE_CONFIG,
   } from '../constants/constants'
   
-  export const isLiked = (likes, userId) => likes.some((id) => id === userId)
+  export const isLiked = (likes, userId) => likes.some((id) => id === userId)//some() проверяет, удовлетворяет ли какой-либо элемент массива условию
   
   export const emailRegister = (register) =>
     register('email', {

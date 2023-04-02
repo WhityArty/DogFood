@@ -6,6 +6,7 @@ import { ReactComponent as FavIcon } from './img/fav.svg'
 import { ReactComponent as ProfileIcon } from './img/profile.svg'
 import { ReactComponent as ChartsIcon } from './img/charts.svg'
 import { ReactComponent as LogIcon } from './img/log.svg'
+import { ReactComponent as LangIcon} from './img/translate.svg'
 
 import { Link, useLocation } from 'react-router-dom'
 import { CardContext } from '../../context/cardContext'
@@ -61,7 +62,9 @@ function Header(props) {
                 <span className={s.iconBubble}>{favorites.length}</span>
               )}
             </Link>
-            <span className={s.lang} onClick={()=>changeLanguage()}>{lang}</span>
+            <span className={s.lang} onClick={()=>changeLanguage()}>
+              <LangIcon />
+            </span>
           </div>
         </div>
       </div>

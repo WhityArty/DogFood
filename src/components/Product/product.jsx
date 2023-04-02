@@ -74,7 +74,7 @@ export const Product = ({
     if (!users.length) return "User";
     const user = users.find((el) => el._id === id);
     console.log({ user });
-    if (user.avatar.includes('default-image')) {
+    if (user?.avatar.includes('default-image')) {
       return {...user, avatar : 'https://img.freepik.com/free-vector/cute-fox-operating-laptop-cartoon-illustration_138676-2743.jpg'}
     }
     return user;
@@ -291,7 +291,7 @@ export const Product = ({
               <div key={e.created_at} className={s.review}>
               <div className={s.review__author}>
                 <div className={s.review__info}>
-                  <span>{getUser(e.author)} </span>
+                  <span>{getUser(author.name)}</span>
                   <span className={s.review__date}>
                     {new Date(e.created_at).toLocaleString("ru", options)}
                   </span>
@@ -307,7 +307,7 @@ export const Product = ({
                 <span>{e.text}</span>
               </div>
             </div>
-          )})};
+          )})}
       </div>
     </>
   );

@@ -21,8 +21,8 @@ const Footer = () => {
 					</div>
 					<div className="footer__col">
 						<nav className="menu-bottom">
-							<a href="/catalogue" className="menu-bottom__item">
-								Каталог
+						   <a href="/ " className="menu-bottom__item">
+								Коталог
 							</a>
 							<a href="/catalogue" className="menu-bottom__item">
 								Акции

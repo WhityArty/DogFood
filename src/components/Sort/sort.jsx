@@ -14,7 +14,7 @@ const Sort = () => {
   console.log({ res });
 
   const tabs = [
-    { id: "newest", title: t("user.info") },
+    { id: "newest", title: t("newest") },
     { id: "cheep", title: t("cheep")},
     { id: "expensive", title: t("expensive")},
     { id: "popular", title: t("popular") },
