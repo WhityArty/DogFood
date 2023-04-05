@@ -9,8 +9,8 @@ import { BaseButton } from "../BaseButton/BaseButton";
 import { Form } from "../Form/Form";
 import { openNotification } from "../Notification/Notification";
 import "./style.scss";
+
 export const Profile = () => {
-  console.log("this is profile");
 
   const navigate = useNavigate();
   const {
@@ -32,13 +32,6 @@ export const Profile = () => {
     }
   };
   
-  const required = {
-    required: {
-      value: true,
-      message: VALIDATE_CONFIG.requiredMessage,
-    },
-  };
-  
   const changeAvatar = async (src) => {
     try {
       const newUser = await api.editUserAvatar({ avatar: src.avatar });
@@ -46,6 +39,13 @@ export const Profile = () => {
     } catch (error) {
       openNotification("error", "Error", "Не удалось изменить аватар");
     }
+  };
+
+  const required = {
+    required: {
+      value: true,
+      message: VALIDATE_CONFIG.requiredMessage,
+    },
   };
 
   const handleLogout = () => {
@@ -62,6 +62,29 @@ export const Profile = () => {
         <h1 className="profile__title">Мои данные</h1>
         {currentUser ? (
           <>
+          <Form className="" handleFormSubmit={handleSubmit(changeAvatar)}>
+              <div className="profile__avatar">
+                <img
+                  src={currentUser?.avatar}
+                  className="profile__image"
+                  alt="avatar"
+                />
+                <input
+                  {...register("avatar", required)}
+                  className="auth__input"
+                  type="text"
+                  name="avatar"
+                  placeholder="Avatar"
+                  defaultValue={currentUser?.avatar}
+                />
+                {errors.name && (
+                  <p className="auth__error">{errors?.name?.message}</p>
+                )}
+              </div>
+              <BaseButton type="submit" color={"purple"}>
+                Изменить аватар
+              </BaseButton>
+            </Form>
             <Form className="" handleFormSubmit={handleSubmit(sendData)}>
               <div className="profile__info">
                 <div>
@@ -106,31 +129,8 @@ export const Profile = () => {
                   disabled
                 />
               </div>
-              <BaseButton type="submit" color={"yellow"}>
+              <BaseButton type="submit" color={"purple"}>
                 Сохранить
-              </BaseButton>
-            </Form>
-            <Form className="" handleFormSubmit={handleSubmit(changeAvatar)}>
-              <div className="profile__avatar">
-                <img
-                  src={currentUser?.avatar}
-                  className="profile__image"
-                  alt="avatar"
-                />
-                <input
-                  {...register("avatar", required)}
-                  className="auth__input"
-                  type="text"
-                  name="avatar"
-                  placeholder="Avatar"
-                  defaultValue={currentUser?.avatar}
-                />
-                {errors.name && (
-                  <p className="auth__error">{errors?.name?.message}</p>
-                )}
-              </div>
-              <BaseButton type="submit" color={"yellow"}>
-                Изменить аватар
               </BaseButton>
             </Form>
           </>
@@ -138,7 +138,7 @@ export const Profile = () => {
           <>Loading</>
         )}
         <div className="profile__logout">
-          <BaseButton onClick={handleLogout} color={"yellow"}>
+          <BaseButton onClick={handleLogout} color={"purple"}>
             Выйти
           </BaseButton>
         </div>

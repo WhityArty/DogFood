@@ -4,8 +4,8 @@ import './index.scss';
 const CardList = ({ onProductLike, cards = [] }) => {
   return (
     <div className='cards'>
-      {cards.map((item) => (
-        <Card key={item._id} {...item} onProductLike={onProductLike} />
+      {cards.length && cards.map((product) => (
+        <Card key={product._id} product={product} {...product} onProductLike={onProductLike} />
       ))}
     </div>
   );

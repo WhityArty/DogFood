@@ -1,7 +1,7 @@
 const onResponse = (res) => {
   const someTmp = res.ok
     ? res.json()
-    : Promise.reject(`Ошибка : ${res.status}`);
+    : res.json().then((data)=> Promise.reject(data.message));
   return someTmp;
 };
 

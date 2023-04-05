@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { login } from '../../utils/authApi';
 import { emailRegister, passwordRegister } from '../../utils/utils';
 import { BaseButton } from '../BaseButton/BaseButton';
 import { Form } from '../Form/Form';
+import { openNotification } from "../Notification/Notification";
 import './style.scss';
 
 export const Login = () => {
@@ -78,7 +79,7 @@ export const Login = () => {
           Восстановить пароль
         </p>
         <div className="auth__actions">
-          <BaseButton type="submit" color={'yellow'}>
+          <BaseButton type="submit" color={'purple'}>
             Войти
           </BaseButton>
           <BaseButton type="button" color={'white'} onClick={handleClick}>

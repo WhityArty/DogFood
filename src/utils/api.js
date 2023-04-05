@@ -12,14 +12,11 @@ class Api {
     this._headers = headers;
 
   }
-  getProductsList() {
-
-    console.log('THIS IS this._headers or config.headers', this._headers);
-    console.log('THIS IS configuration()', this._configuration());
-
-    return fetch(`${this._baseUrl}/products`, { headers: this._headers }).then(
-      onResponse
-    );
+  getProductsList(page = 1, size = 100) {
+    return fetch(
+      `${this._baseUrl}/products`,
+      this._configuration()
+    ).then(onResponse);
   }
   getRickAndMortyList(page) {
     return fetch(
@@ -27,6 +24,7 @@ class Api {
       this._configuration()
     ).then(onResponse);
   }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, this._configuration()).then(
       onResponse
@@ -58,6 +56,14 @@ class Api {
       this._configuration()
     ).then(onResponse);
   }
+  editPostById(postId, body) {
+    return fetch(`${this._baseUrl}/v2/group-9/posts/${postId}`, {
+      ...this._configuration(),
+      method: "PATCH",
+      body: JSON.stringify(body),
+
+    }).then(onResponse);
+  }
   deleteProductById(idProduct) {
     return fetch(`${this._baseUrl}/products/${idProduct}`, {
       ...this._configuration(),
@@ -71,9 +77,10 @@ class Api {
     ).then(onResponse);
   }
   getUsers() {
-    return fetch(`${this._baseUrl}/v2/group-9/users`, this._configuration()).then(
-      onResponse
-    );
+    return fetch(
+      `${this._baseUrl}/v2/group-9/users`,
+      this._configuration()
+    ).then(onResponse);
   }
   editUserAvatar(body) {
     return fetch(`${this._baseUrl}/v2/group-9/users/me/avatar`, {
@@ -95,11 +102,16 @@ class Api {
       method: "DELETE",
     }).then(onResponse);
   }
+  addProduct(body) {
+    return fetch(`${this._baseUrl}/products`, {
+      ...this._configuration(),
+      method: "POST",
+      body: JSON.stringify(body),
+    }).then(onResponse);
+  }
 }
 
 const configuration = () => {
-
-  console.log('HELLO i was called');
   return {
     headers: {
       "content-type": "application/json",
@@ -126,5 +138,3 @@ export const getRickAndMortyList = async () => {
     headers: config.headers,
   }).then((res) => res.json());
 };
-
-// api._headers

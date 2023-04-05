@@ -9,6 +9,12 @@
   & .inner {
     color: red;
   }
+  &__select {
+    & .ant-select-selector {
+      border: none;
+      background-color: red;
+    }
+  }
 }
 
 .sort__link {
@@ -16,7 +22,7 @@
 	font-size: 14px;
 	line-height: 20px;
 	color: #7B8E98;
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .sort__link_selected {

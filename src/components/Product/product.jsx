@@ -133,7 +133,7 @@ export const Product = ({
           </span>
           <Rating isEditable={true} rating={rating} setRating={setRating} />
           <span className={s.reviewsCount}>
-            {reviewsProduct?.length} отзывов
+            {reviews?.length} отзывов
           </span>
         </div>
       </div>
@@ -177,29 +177,22 @@ export const Product = ({
             >
               В корзину
             </button>
-          </div>
-          <button
-            className={cn(s.favorite, { [s.favoriteActive]: isClicked })}
-            onClick={(e) => onLike(e)}
-          >
-            <Save />
-            <span>{isClicked ? "В избранном" : "В избранное"}</span>
-          </button>
-          <div className={s.delivery}>
-            <img src={truck} alt="truck" />
-            <div className={s.right}>
-              <h3 className={s.name}>Доставка по всему Миру!</h3>
-              <p className={s.text}>
-                Доставка курьером — <span className={s.bold}>от 399 ₽</span>
-              </p>
             </div>
+            <div className={s.edit}>
+            <button
+              className={cn(s.favorite, { [s.favoriteActive]: isClicked })}
+              onClick={(e) => onLike(e)}
+            >
+              <Save />
+              <span>{isClicked ? "В избранном" : "В избранное"}</span>
+            </button>
           </div>
           <div className={s.delivery}>
             <img src={quality} alt="quality" />
             <div className={s.right}>
-              <h3 className={s.name}>Доставка по всему Миру!</h3>
+              <h3 className={s.name}>Доставка по Москве!</h3>
               <p className={s.text}>
-                Доставка курьером — <span className={s.bold}>от 399 ₽</span>
+                Доставка курьером — <span className={s.bold}>от 599 ₽</span>
               </p>
             </div>
           </div>
@@ -208,30 +201,6 @@ export const Product = ({
       <div className={s.box}>
         <h2 className={s.title}>Описание</h2>
         <p className={s.subtitle} dangerouslySetInnerHTML={desctiptionHTML}></p>
-        <h2 className={s.title}>Характеристики</h2>
-        <div className={s.grid}>
-          <div className={s.naming}>Вес</div>
-          <div className={s.description}>1 шт 120-200 грамм</div>
-          <div className={s.naming}>Цена</div>
-          <div className={s.description}>490 ₽ за 100 грамм</div>
-          <div className={s.naming}>Польза</div>
-          <div className={s.description}>
-            <p>
-              Большое содержание аминокислот и микроэлементов оказывает
-              положительное воздействие на общий обмен веществ собаки.
-            </p>
-            <p>Способствуют укреплению десен и жевательных мышц.</p>
-            <p>
-              Развивают зубочелюстной аппарат, отвлекают собаку во время смены
-              зубов.
-            </p>
-            <p>
-              Имеет цельную волокнистую структуру, при разжевывание получается
-              эффект зубной щетки, лучше всего очищает клыки собак.
-            </p>
-            <p>Следует учесть высокую калорийность продукта.</p>
-          </div>
-        </div>
       </div>
       <div className={s.reviews}>
         <div className={s.reviews__control}>
@@ -274,7 +243,7 @@ export const Product = ({
                 <p className="auth__error">{errors?.textarea?.message}</p>
               )}
               <div className={s.form__btn}>
-                <BaseButton type="submit" color={"yellow"}>
+                <BaseButton type="submit" color={"purple"}>
                   Отправить
                 </BaseButton>
               </div>

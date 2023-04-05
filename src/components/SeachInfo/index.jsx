@@ -3,7 +3,6 @@ import './index.css';
 
 const SeachInfo = ({ searchText, searchCount }) => {
   const location = useLocation();
-  console.log({ location });
   return (
     location.pathname === '/' &&
     searchText && (

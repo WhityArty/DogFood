@@ -16,7 +16,6 @@ export const EditPost = () => {
     } = useForm();
 
     const sendData = async (data) => {
-        // console.log(data)
         await api.editPostById(postId, {...product, title: data.name })
     }
 
