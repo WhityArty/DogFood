@@ -18,12 +18,6 @@ class Api {
       this._configuration()
     ).then(onResponse);
   }
-  getRickAndMortyList(page) {
-    return fetch(
-      `https://rickandmortyapi.com/api/character/?page=${page}`,
-      this._configuration()
-    ).then(onResponse);
-  }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, this._configuration()).then(
@@ -49,7 +43,6 @@ class Api {
       ...this._configuration(),
     }).then(onResponse);
   }
-
   getProductById(idProduct) {
     return fetch(
       `${this._baseUrl}/products/${idProduct}`,

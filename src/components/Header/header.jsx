@@ -81,9 +81,6 @@ function Header(props) {
             <span onClick={() => setIsActiveModal(true)}> 
              <CardIcon />
             </span>
-            <Link to={'/blog'} className={s.favoritesLink}> 
-              <BlogIcon />
-            </Link>
             <span className={s.lang} onClick={()=>changeLanguage()}>
               <LangIcon />
             </span>

@@ -12,7 +12,6 @@ import api from "../../utils/api";
 import { isLiked } from "../../utils/utils";
 
 export const ProductPage = () => {
-  //const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState(null);
   const [reviews, setReviews] = useState([]);
@@ -85,7 +84,7 @@ export const ProductPage = () => {
           <Spinner />
         ) : (
           <Product
-            {...product}
+            {...product} 
             reviews={reviews}
             currentUser={currentUser}
             onProductLike={onProductLike}

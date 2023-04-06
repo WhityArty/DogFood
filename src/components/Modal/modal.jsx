@@ -1,16 +1,14 @@
 import cn from "classnames";
 import { useEffect, useRef } from "react";
-import { useState } from "react";
+//import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './index.css'
-import { ReactComponent as CloseIcon } from "./x.svg";
+
 
 export const Modal = ({ children, activeModal, setActiveModal }) => {
-// const [active, setActive] = useState(false);
 
 useEffect(() => {
-  // setActive(true);
-  // setActiveModal(false);
+
   ref.current.addEventListener("keydown", onModalKeyDown);
   document.addEventListener("keydown", onModalKeyDown);
   return ()=> document.removeEventListener('keydown', onModalKeyDown)

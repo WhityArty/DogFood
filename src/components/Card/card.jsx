@@ -11,6 +11,7 @@ import { ReactComponent as Save } from './save.svg';
 
 const Card = ({
   name,
+  stock,
   price,
   discount,
   wight,
@@ -83,12 +84,12 @@ const Card = ({
           {price && <span className={discount !== 0 ? "card__old-price" : "card__price"}>
             {price}&nbsp;₽
           </span>}
-          {discount && discount !== 0 && (
+          {!!discount && (
             <span className="card__price card__price_type_discount">
               {discount_price}&nbsp;₽
-            </span>
+            </span> 
           )}
-          <span className="card__wight">{wight}</span>
+          <p className="card__wight">{stock}&nbsp;шт</p>
           <p className="card__name">{name}</p>
         </div>
       </Link>

@@ -19,6 +19,7 @@ import { VALIDATE_CONFIG } from "../../constants/constants";
 export const Product = ({
   pictures,
   name,
+  stock,
   price,
   discount,
   onProductLike,
@@ -28,7 +29,6 @@ export const Product = ({
   reviews,
   onSendReview,
   deleteReview,
-  stock,
 }) => {
   const discount_price = Math.round(price - (price * discount) / 100);
   const isLike = likes.some((id) => id === currentUser?._id);

@@ -27,13 +27,11 @@ import { StyleGuide } from "../StyleGuide/StyleGuide";
 import { Chart } from "../Chart/Chart";
 import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 import { Profile } from "../Profile/Profile";
-import { Blog } from "../../pages/blog/blog"
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../storageTK/user/userSlice";
 import { parseJwt } from "../../utils/parseJWT";
 import { useCurrentWidth } from "../../hooks/useCurrentWidth";
-import { EditPost } from "../EditPost/EditPost";
+
 import { CreateProduct } from "../CreateProduct/CreateProduct";
 import { BasketPage } from "../../pages/basket/basketPage";
 
@@ -66,7 +64,10 @@ function App() {
       new Date(item.created_at) < new Date("2022-12-05T11:22:43.008Z")
     );
   };
-
+// обработка запроса , search - API поиска позволяет отображать результаты поиска, 
+                                //Метод then() возвращает Promise. Метод может принимать два аргумента: колбэк-функции для случаев выполнения и отклонения промиса.
+                                //Метод catch() используют для обработки ошибки
+                                //асинхронный метод setState.
   const handleRequest = () => { // поиск карточек
     api
       .search(debounceSearchQuery)
@@ -301,15 +302,6 @@ function App() {
                 <Route path="visual" element={<Chart />}></Route>
                 <Route path="basket" element={<BasketPage />}></Route>
                 {authRoutes}
-                <Route path="style-guide" element={<StyleGuide />}></Route>
-                <Route
-                  path="edit-post/:postId"
-                  element={
-                    <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
-                      <EditPost />
-                    </Modal>
-                  }
-                ></Route>
                 <Route path="*" element={<NoMatchFound />}></Route>
               </Routes>
               {backgroundLocation && <Routes>{authRoutes}</Routes>}

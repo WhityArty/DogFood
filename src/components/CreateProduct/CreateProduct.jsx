@@ -26,10 +26,10 @@ export const CreateProduct = ({ setIsActiveModal }) => {
     return (<div className="create-product">
         <Form handleFormSubmit={handleSubmit(sendProduct)} >
             <span>Новый продукт</span>
-
             <input type="text" className="auth__input" placeholder='name'  {...register('name', { required: true })} />
             <input type="number" className="auth__input" placeholder='price'  {...register('price', { required: true })} />
             <input type="number" className="auth__input" placeholder='stock'  {...register('stock', { required: true })} />
+            <input type="number" className="auth__input" placeholder='discount'  {...register('discount', { required: true })} />
             <input type="text" className="auth__input" placeholder='description'  {...register('description', { required: true })} />
             <input type="text" className="auth__input" placeholder='pictures'  {...register('pictures', { required: true })} />
             <BaseButton type="submit" color={'purple'}>Создать товар</BaseButton>
